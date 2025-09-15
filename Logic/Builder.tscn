@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://wtdykxfhlkgl"]
+
+[ext_resource type="Script" uid="uid://y310y8iq8wae" path="res://Logic/BuilderMovement.gd" id="1_1caxq"]
+[ext_resource type="Texture2D" uid="uid://kedjpsvvmm87" path="res://Content/textures/grids/fading_grid.png" id="2_rcg4e"]
+[ext_resource type="Texture2D" uid="uid://bv6qj6len4gns" path="res://Content/textures/drone/drone.png" id="3_rcg4e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bd2u4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="FadingGrid" type="Sprite2D" parent="."]
+texture = ExtResource("2_rcg4e")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_1caxq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_bd2u4")
+
+[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+rotation = 1.5708
+texture = ExtResource("3_rcg4e")
