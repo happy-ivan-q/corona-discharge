@@ -14,9 +14,10 @@ texture = ExtResource("2_rcg4e")
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_1caxq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_bd2u4")
-
 [node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
+z_index = 1
 rotation = 1.5708
 texture = ExtResource("3_rcg4e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_bd2u4")

@@ -22,5 +22,4 @@ func _input(event):
 	for i in get_tree().current_scene.get_node("Builder").get_node("CharacterBody2D").placed_block_types:
 		partlist += i
 		partlist += "\n"
-	$RichTextLabel.set_text(partlist)
-	$RichTextLabel.add_theme_color_override("default_color", font_color)
+	

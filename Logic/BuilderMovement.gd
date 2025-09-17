@@ -18,6 +18,7 @@ var visited = []
 var count = 0
 var freq = 50
 var txstate = 1
+var hanging_blocks = []
 
 # Preload textures to avoid loading them every frame
 var drone_textures = {
@@ -29,7 +30,7 @@ var drone_textures = {
 
 func _ready() -> void:
 	var bg = TextureRect.new()
-	bg.texture = preload("res://Content/textures/grids/white_grid_on_black.png")
+	bg.texture = preload("res://Content/textures/bg.png")
 	bg.stretch_mode = TextureRect.STRETCH_TILE
 	bg.expand = true
 	bg.anchor_right = 1
@@ -140,7 +141,8 @@ func block_place(pos: Vector2, block_id: int):
 	   Vector2(snapped_pos.x, snapped_pos.y + GRID_SIZE) in placed_block_positions or \
 	   Vector2(snapped_pos.x, snapped_pos.y - GRID_SIZE) in placed_block_positions or \
 	   Vector2(snapped_pos.x - GRID_SIZE, snapped_pos.y) in placed_block_positions or \
-	   Vector2(snapped_pos.x + GRID_SIZE, snapped_pos.y) in placed_block_positions:
+	   Vector2(snapped_pos.x + GRID_SIZE, snapped_pos.y) in placed_block_positions or \
+		true:
 		
 		if not snapped_pos in placed_block_positions: 
 			var block = Sprite2D.new()
@@ -167,7 +169,6 @@ func block_unplace(pos: Vector2):
 	check_hanging_blocks()
 	
 func check_hanging_blocks():
-	# Create a copy of positions to avoid modifying while iterating
 	var positions_to_check = placed_block_positions.duplicate()
 	
 	for pos in positions_to_check:
@@ -179,11 +180,10 @@ func check_hanging_blocks():
 			# Find the index again since arrays may have changed
 			var index = placed_block_positions.find(pos)
 			if index != -1:
-				print("Removing hanging block at ", pos)
-				placed_blocks[index].queue_free()
-				placed_blocks.remove_at(index)
-				placed_block_positions.remove_at(index)
-				placed_block_types.remove_at(index)
+				#print("Removing hanging block at ", pos)
+				#block_unplace(pos)
+				hanging_blocks.append(pos)
+				
 	
 func snap(pos: Vector2) -> Vector2:
 	return Vector2(floor(pos.x / GRID_SIZE) * GRID_SIZE, floor(pos.y / GRID_SIZE) * GRID_SIZE)

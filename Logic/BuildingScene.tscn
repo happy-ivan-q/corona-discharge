@@ -162,6 +162,7 @@ script = ExtResource("1_ep3m3")
 [node name="Builder" parent="." instance=ExtResource("1_ft2xr")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
 position_smoothing_enabled = true
 
 [node name="Control" parent="Camera2D" instance=ExtResource("3_3ojex")]
