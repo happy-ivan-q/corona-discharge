@@ -9,7 +9,8 @@ var font_color = Color.WHITE
 
 
 func _input(event):
-	
+	if event.is_action("ui_cancel"):
+		SceneManager.switch_scene("res://Logic/Config.tscn")
 	if event.is_action_released("ui_up"):
 		selected_part_id += 1
 	elif event.is_action_released("ui_down"):
