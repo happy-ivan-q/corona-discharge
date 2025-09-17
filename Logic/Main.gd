@@ -30,6 +30,7 @@ func _ready():
 	background.texture = preload("res://Content/textures/ui.png")
 	background.expand = true
 	background.stretch_mode = TextureRect.EXPAND_FIT_HEIGHT_PROPORTIONAL
+	background.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	
 	# Make the TextureRect fill the entire Control container
 	background.anchor_left = 0.0

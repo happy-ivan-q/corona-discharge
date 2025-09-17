@@ -7,7 +7,6 @@ var selected_part_id = 0
 var part_count = 1
 var font_color = Color.WHITE
 
-
 func _input(event):
 	if event.is_action("ui_cancel"):
 		SceneManager.switch_scene("res://Logic/Config.tscn")
